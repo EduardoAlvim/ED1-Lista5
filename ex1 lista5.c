@@ -4,7 +4,7 @@
 struct stack
 {
     int topo;
-    int dados[5];
+    int dados[20];
 };
 void empilha (int x, struct stack *pilha);
 int desempilha(struct stack *pilha);
@@ -18,13 +18,13 @@ void main()
     p2.topo=-1;
     p3.topo=-1;
     int v, x;
-    for(int i=0; i<5; i++)
+    for(int i=0; i<20; i++)
     {
         printf("\nDigite o valor a ser empilhado: ");
         scanf("%d",&v);
         empilha(v, &p1);
     }
-    for(int i=0; i<5; i++)
+    for(int i=0; i<20; i++)
     {
         x=desempilha(&p1);
         if(x<100)
@@ -36,11 +36,19 @@ void main()
             empilha(x,&p3);
         }
     }
+    printf("\nPilha 2:");
+    for(int i=0; i<=p2.topo; i++){
+        printf("\n %d",p2.dados[i]);
+    }
+    printf("\nPilha 3:");
+    for(int i=0; i<=p3.topo; i++){
+        printf("\n %d",p3.dados[i]);
+    }
 }
 
 void empilha (int x, struct stack *pilha)
 {
-    if (pilha->topo == 4)
+    if (pilha->topo == 19)
     {
         /* pilha cheia*/printf("%s", "stack overflow");
     }
@@ -65,4 +73,5 @@ int desempilha(struct stack *pilha)
         return x;
     }
 }
+
 
